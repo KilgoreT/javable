@@ -1,8 +1,8 @@
-package examples.exceptions;
+package examples.stream;
 
 /**
  * Created on 20.02.2017.
- * exceptions
+ * stream
  */
 public class Main {
 }

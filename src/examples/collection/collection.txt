@@ -1,0 +1,3 @@
+Iterable
+    Collection: add(T), remove(T), size()
+        List:   get(int):T, set(int,T), add(int,T), remove(int)
