@@ -5,8 +5,8 @@ Iterable
 
         Set
             HashSet
-            SortedSet
-                NavigableSet
+            i SortedSet
+                i NavigableSet
                     TreeSet
 
 Map: put(K key, V value), get(K key): V, containsKey(K key), remove(K key)
