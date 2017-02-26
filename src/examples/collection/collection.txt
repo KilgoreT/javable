@@ -14,3 +14,17 @@ Map: put(K key, V value), get(K key): V, containsKey(K key), remove(K key)
     SortedMap
         NavigableMap
             TreeMap
+
+
+Производительность:
+
+HashMap
+    put:        1/1/n
+    cont\get:   1/1/n
+    remove:     1/1/n
+
+TreeMap
+(в среднем хуже чем HashMap)
+    put:        O(log n)
+    cont\get:   O(log n)
+    remove:     O(log n)
