@@ -1,6 +1,9 @@
+    Иерархия:
 Iterable
-    Collection: add(T), remove(T), size()
+    Collection: add(T), remove(T), contains(T), size()
         List:   get(int):T, set(int,T), add(int,T), remove(int)
+            ArrayList
+            LinkedList
 
 
         Set
@@ -16,7 +19,31 @@ Map: put(K key, V value), get(K key): V, containsKey(K key), remove(K key)
             TreeMap
 
 
-Производительность:
+
+    Таблица свойств:
+  Sorted    |   Non-sorted  |
+  ------------------------------------
+  List      |               | dubl
+  ------------------------------------
+  SortedSet |      Set      | Non-dubl
+  ------------------------------------
+
+
+
+    Производительность:
+
+ArrayList:
+    get:        O(1)
+    set:        O(1)
+    add:        O(1)/O(n)
+    remove:     O(1)/O(n)
+    contains:   O(1)/O(n)
+
+LikedList:
+    get:        O(1)/O(n)
+    set:        O(1)/O(n)
+    add:        O(1)
+    remove:     O(1)
 
 HashMap
     put:        1/1/n
