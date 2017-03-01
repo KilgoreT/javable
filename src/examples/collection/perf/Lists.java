@@ -1,4 +1,4 @@
-package examples.collection;
+package examples.collection.perf;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -5,7 +5,7 @@ import static java.lang.Math.abs;
 /**
  * Created by apomazkin on 27.02.2017.
  */
-public class Map {
+public class Maps {
     public static void main(String[] args) {
         System.out.println("0");
     }

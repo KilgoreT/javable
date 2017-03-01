@@ -3,7 +3,7 @@ package examples.collection;
 import java.util.*;
 
 
-public class Set {
+public class Sets {
     public static void main(String[] args) {
 
         Random rand = new Random(0);
