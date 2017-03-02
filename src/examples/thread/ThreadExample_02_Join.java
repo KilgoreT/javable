@@ -22,12 +22,24 @@ public class ThreadExample_02_Join {
          */
         threadA.start();
         threadB.start();
+        /**
+         * Thread.join() останавливает поток(main),
+         * из вызывается Thread.start().
+         * Этот поток(main) ожидает выполнения Thread
+         * и только потом продолжает работу.
+         */
         try {
             threadA.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Finish");
+        /**
+         * если закоментировать вышестоящий try с  threadA.join(),
+         * то main напечатает "Finish" до того, как закончат работу потоки A и B.
+         * В текущей ситуации "Finish" будет напечатана после окончания потока threadA,
+         * а поток threadB будет продолжать работу еще какие-то время.
+         */
+        System.out.println("   Finish");
     }
 }
 
