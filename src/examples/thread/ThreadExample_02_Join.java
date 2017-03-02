@@ -24,7 +24,7 @@ public class ThreadExample_02_Join {
         threadB.start();
         /**
          * Thread.join() останавливает поток(main),
-         * из вызывается Thread.start().
+         * из которого вызывается Thread.start().
          * Этот поток(main) ожидает выполнения Thread
          * и только потом продолжает работу.
          */
