@@ -52,6 +52,10 @@ public class Sets {
             NavigableSet<Integer> subset = nsInteger.subSet(fromElement, true, toElement, false);
             System.out.println("[" + fromElement + " " + toElement + "):" + subset.toString());
         }
+
+        /**
+         * печать разных графиков и гистограмм.
+         */
         Map<Integer, Integer> histogram = new TreeMap<>();
         for (int i = 0; i < 10; i++) {
             int fromElement = 100 * i;

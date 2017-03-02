@@ -3,7 +3,7 @@ package examples.collection;
 import static java.lang.Math.abs;
 
 /**
- * Created by apomazkin on 27.02.2017.
+ * Простая реализация HashMap
  */
 public class Maps {
     public static void main(String[] args) {
@@ -13,13 +13,13 @@ public class Maps {
 
 
 class XHashMap<K, V> implements XMap<K, V> {
-    private final static int DEFAULT_INITIAL_CAPACITY = 16;
     /**
      * if (count * 0.75 > size) {
      *     идет rehashing: увеличивается количество бакетов.
      * }
      */
     private final static float DEFAULT_LOAD_FACTOR = 0.75f;
+    private final static int DEFAULT_INITIAL_CAPACITY = 16;
 
     private final float loadFactor;
     private Entry<K, V>[] table;
@@ -76,6 +76,12 @@ class XHashMap<K, V> implements XMap<K, V> {
 }
 
 
+/**
+ * Нода для структуры LinkedList
+ * @param <K0> - ключ.
+ * @param <V0> - значение
+ *  next - ссылка на следующую ноду.
+ */
 class Entry<K0, V0> {
     final K0 key;
     V0 value;

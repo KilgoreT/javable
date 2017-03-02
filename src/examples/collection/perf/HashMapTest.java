@@ -12,7 +12,7 @@ public class HashMapTest {
         for (int i = 0; i < INITIAL_CAPACITY - 1; i++) {
             map.put(i, -i);
         }
-        //for ()
+        // ловим процесс расширения HashMap
         long t0 = System.nanoTime();
         map.put(-1, null);
         long t1 = System.nanoTime();
