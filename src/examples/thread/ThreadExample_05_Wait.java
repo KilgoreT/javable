@@ -21,7 +21,7 @@ public class ThreadExample_05_Wait {
      * Если один зашел и сделал wait(), то он останавливается и заходит другой,
      * как мы это и видим в данном примере
      *
-     * mutual exclusion - взаимное исключение
+     * conditional waiting - условное ожидание
      */
 
     public synchronized void f(int x) throws InterruptedException {
