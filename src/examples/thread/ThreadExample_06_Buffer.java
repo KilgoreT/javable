@@ -6,7 +6,7 @@ package examples.thread;
 public class ThreadExample_06_Buffer {
     public static void main(String[] args) {
         SingleElementBuffer buffer = new SingleElementBuffer();
-        new Thread(new Producer(1, 10000, buffer)).start();
+        new Thread(new Producer(1, 100, buffer)).start();
         new Thread(new Comsumer(buffer)).start();
     }
 }
