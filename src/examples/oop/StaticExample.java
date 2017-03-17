@@ -8,4 +8,9 @@ package examples.oop;
  * Статические поля принадлежат классу, а не объекту.
  */
 public class StaticExample {
+   public static int staticExample;
+
+    public StaticExample() {
+        staticExample++;
+    }
 }
