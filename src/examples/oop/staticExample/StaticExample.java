@@ -1,4 +1,4 @@
-package examples.oop;
+package examples.oop.staticExample;
 
 /**
  * Created by apomazkin on 17.03.2017.
