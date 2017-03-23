@@ -12,7 +12,7 @@ public class JdbcExample {
         Connection c = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:C:\\tmp\\test.db");
+            c = DriverManager.getConnection("jdbc:sqlite:src\\examples\\jdbc\\test.db");
             return c;
         } catch (Exception e) {
             //e.printStackTrace();
