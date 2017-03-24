@@ -39,6 +39,7 @@ public class JdbcExample {
                 System.out.print(" - " + login);
                 System.out.println(" - " + age);*/
             }
+            System.out.println("commit");
             connection.commit();
             result.toString();
 

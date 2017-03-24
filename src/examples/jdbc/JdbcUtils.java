@@ -1,8 +1,6 @@
 package examples.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by apomazkin on 24.03.2017.
@@ -38,5 +36,11 @@ public class JdbcUtils {
     }
 
     public static void closeQuietly(Connection connection) {
+    }
+
+    public static void closeQuietly(ResultSet rs) {
+    }
+
+    public static void closeQuietly(Statement statement) {
     }
 }
