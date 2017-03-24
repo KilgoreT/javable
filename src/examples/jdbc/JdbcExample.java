@@ -1,6 +1,8 @@
 package examples.jdbc;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by apomazkin on 23.03.2017.
@@ -12,7 +14,7 @@ public class JdbcExample {
         Connection c = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:src\\examples\\jdbc\\test.db");
+            c = DriverManager.getConnection("jdbc:sqlite:src\\examples\\jdbc\\testdb.db");
             return c;
         } catch (Exception e) {
             //e.printStackTrace();
@@ -38,11 +40,25 @@ public class JdbcExample {
 
             statement = connection.createStatement();
             rs = statement.executeQuery(SELECT_ALL);
+
+            List<User> result = new ArrayList<>();
             while (rs.next()) {
-                System.out.print(rs.getInt("id"));
-                System.out.print(" - " + rs.getString("name"));
-                System.out.println(" - " + rs.getInt("age"));
+
+                int id = rs.getInt("id");
+                String login = rs.getString("name");
+                int age = rs.getInt("age");
+
+                User user = new User(id);
+                user.setLogin(login);
+                user.setAge(age);
+
+                result.add(user);
+
+                /*System.out.print(id);
+                System.out.print(" - " + login);
+                System.out.println(" - " + age);*/
             }
+            connection.commit();
 
 
         } catch (SQLException e) {
@@ -51,4 +67,22 @@ public class JdbcExample {
 
     }
 
+}
+
+class User {
+    int id;
+    String login;
+    int age;
+
+    public User(int id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
