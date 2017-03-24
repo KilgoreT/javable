@@ -4,32 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by apomazkin on 23.03.2017.
- */
+
 public class JdbcExample {
     public static final String SELECT_ALL = "Select * from users";
 
-    private static Connection getConnection() {
-        Connection c = null;
-        try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:src\\examples\\jdbc\\testdb.db");
-            return c;
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
-        if (c != null) {
-            return c;
-        } else {
-            System.out.println("Not found.");
-            return null;
-        }
-    }
-
     public static void main(String[] args) {
 
-        Connection connection = getConnection();
+        Connection connection = JdbcUtils.getConnection();
         Statement statement = null;
         ResultSet rs = null;
 
@@ -59,10 +40,16 @@ public class JdbcExample {
                 System.out.println(" - " + age);*/
             }
             connection.commit();
+            result.toString();
 
 
         } catch (SQLException e) {
+            JdbcUtils.rollbackQuietly(connection);
             e.printStackTrace();
+        } finally {
+            JdbcUtils.closeQuietly(rs);
+            JdbcUtils.closeQuietly(statement);
+            JdbcUtils.closeQuietly(connection);
         }
 
     }
