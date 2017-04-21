@@ -6,23 +6,34 @@ import java.util.List;
 
 
 public class JdbcExample {
+
+    // Запрос к базе хранится в String.
     public static final String SELECT_ALL = "Select * from users";
 
     public static void main(String[] args) {
 
+        // 1. Создается Connection
         Connection connection = JdbcUtils.getConnection();
+        // 2. Создается Statement
         Statement statement = null;
+        // 3. Создается ResultSet
         ResultSet rs = null;
 
         try {
 
+            // настройка уровня транзакций
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            // отключаем автокоммит.
             connection.setAutoCommit(false);
 
+            // получаем Statement из Connection
             statement = connection.createStatement();
+            // получаем ResultSet из Statement.
             rs = statement.executeQuery(SELECT_ALL);
 
             List<User> result = new ArrayList<>();
+
+            // разбираем ResultSet на объекты.
             while (rs.next()) {
 
                 int id = rs.getInt("id");
@@ -41,13 +52,17 @@ public class JdbcExample {
             }
             System.out.println("commit");
             connection.commit();
-            result.toString();
+            System.out.println(result.toString());
+         /*   for (User user: result) {
+                user.toString();
+            }*/
 
 
         } catch (SQLException e) {
             JdbcUtils.rollbackQuietly(connection);
             e.printStackTrace();
         } finally {
+            // обязательно нужно закрывать все открытые объекты
             JdbcUtils.closeQuietly(rs);
             JdbcUtils.closeQuietly(statement);
             JdbcUtils.closeQuietly(connection);
@@ -56,6 +71,7 @@ public class JdbcExample {
     }
 
 }
+
 
 class User {
     int id;
@@ -72,5 +88,14 @@ class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
