@@ -1,6 +1,6 @@
 package pazzles;
 
-import static pazzles.HexMixedComputation.hexAddition;
+import static pazzles._0_03_HexMixedComputation.hexAddition;
 
 /**
  * Created on 20.02.2017.

@@ -3,7 +3,7 @@ package pazzles;
 /**
  * Created by apomazkin on 21.02.2017.
  */
-public class LongDivision {
+public class _0_02_LongDivision {
     public static void longDivision() {
         /** MICROS_PER_DAY
          * в переменной вызывается переполнение,
