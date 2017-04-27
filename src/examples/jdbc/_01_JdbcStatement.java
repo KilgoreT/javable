@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JdbcExample {
+public class _01_JdbcStatement {
 
     // Запрос к базе хранится в String.
     public static final String SELECT_ALL = "Select * from users";
@@ -72,30 +72,3 @@ public class JdbcExample {
 
 }
 
-
-class User {
-    int id;
-    String login;
-    int age;
-
-    public User(int id) {
-        this.id = id;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", age=" + age +
-                '}';
-    }
-}
