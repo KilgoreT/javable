@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class _01_JdbcStatement {
+public class _01_Jdbc_Statement {
 
     // Запрос к базе хранится в String.
     public static final String SELECT_ALL = "Select * from users";
