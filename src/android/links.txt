@@ -1,0 +1,15 @@
+
+URI
+https://habrahabr.ru/post/190154/
+https://habrahabr.ru/post/232385/
+
+Resourse:
+https://developer.android.com/guide/topics/resources/accessing-resources.html
+
+Acrivity:
+https://developer.android.com/guide/components/activities.html
+https://developer.android.com/guide/components/tasks-and-back-stack.html
+
+Intent:
+https://developer.android.com/reference/android/content/Intent.html
+https://developer.android.com/guide/components/intents-filters.html
