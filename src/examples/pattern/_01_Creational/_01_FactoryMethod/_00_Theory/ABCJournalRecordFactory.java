@@ -4,7 +4,9 @@ package examples.pattern._01_Creational._01_FactoryMethod._00_Theory;
 import java.io.DataInput;
 import java.io.EOFException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
@@ -15,6 +17,7 @@ public class ABCJournalRecordFactory implements JournalRecordFactoryIF {
     private static final String SALE_LINE_ITEM = "17";
 
     private DataInput in;
+
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 
     // счетчик количества записей
@@ -57,7 +60,13 @@ public class ABCJournalRecordFactory implements JournalRecordFactoryIF {
         String transactionID = tok.nextToken();
         tok.nextToken();
         String timestampString = tok.nextToken();
-        Date timestamp = parseTimestamp(timestampString);
+        Date timestamp = null;
+        try {
+            timestamp = dateFormat.parse(timestampString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //Date timestamp = parseTimestamp(timestampString);
         String terminalID = tok.nextToken();
         return new StartOfSale(terminalID,
                 sequenceNumber,
