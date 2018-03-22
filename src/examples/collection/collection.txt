@@ -1,3 +1,8 @@
+
+https://habrahabr.ru/post/162017/
+https://habrahabr.ru/post/164027/
+
+
     Иерархия:
 Iterable
     Collection: add(T), remove(T), contains(T), size()
@@ -38,12 +43,15 @@ ArrayList:
     add:        O(1)/O(n)
     remove:     O(1)/O(n)
     contains:   O(1)/O(n)
+    Преимущества: доступ к произвольному элементу и вставка последнего за постоянное время.
 
 LikedList:
     get:        O(1)/O(n)
     set:        O(1)/O(n)
     add:        O(1)
     remove:     O(1)
+    Преимущества: вставка и удаление - постоянное время.
+            В целом, проигрывает ArrayList'у по памяти с скорости выполнения операций.
 
 HashMap
     put:        1/1/n
