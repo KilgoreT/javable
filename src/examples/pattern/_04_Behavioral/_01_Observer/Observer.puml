@@ -1,0 +1,34 @@
+@startuml
+
+interface ____Subject____
+interface ____Observer____
+class ConcreteSubject
+class ConcreteObserver
+
+
+____Subject____ <|.. ConcreteSubject
+____Observer____ <|.. ConcreteObserver
+
+____Subject____ -> ____Observer____
+ConcreteSubject <- ConcreteObserver
+
+interface ____Subject____ {
+registerObserver()
+removeObserver()
+notyfyObserver()
+}
+interface ____Observer____ {
+update()
+}
+class ConcreteObserver {
+update()
+}
+class ConcreteSubject {
+registerObserver(){...}
+removeObserver(){...}
+notyfyObserver(){...}
+getState();
+setState();
+}
+
+@enduml
