@@ -4,6 +4,10 @@ import static java.lang.Math.abs;
 
 /**
  * Простая реализация HashMap
+ * Для чего: ускорения добавления и поиска, так как соответствие между hashcode и бакетом вычисляется.
+ * Недостатки: память потребляется даже нулевыми бакетами.
+ * Для того, чтобы от роста данных не было задержек, увеличивают размер массива бакетов и проводят "рехэшинг",
+ * т.е. перераспределение записей по бакетам.
  */
 public class Maps {
     public static void main(String[] args) {
@@ -22,6 +26,10 @@ class XHashMap<K, V> implements XMap<K, V> {
     private final static int DEFAULT_INITIAL_CAPACITY = 16;
 
     private final float loadFactor;
+    /**
+     * внутри HashMap массив, его элементы наз. buckets.
+     * в бакете находится первый элемент связанного списка.
+     */
     private Entry<K, V>[] table;
     private int size = 0;
 
@@ -35,6 +43,12 @@ class XHashMap<K, V> implements XMap<K, V> {
 
     @Override
     public void put(K key, V value) {
+        /**
+         * При добавлении:
+         * 1. вычисляется hashcode (ключ)
+         * 2. вычисляется индекс бакета
+         * т.е. соотношение между ключем и бакетом не хранится, а вычисляется.
+         */
         int bucketIndex = abs(key.hashCode()) % table.length;
         Entry<K, V> currentEntry = table[bucketIndex];
         table[bucketIndex] = new Entry<K, V>(key, value, currentEntry);
@@ -58,6 +72,9 @@ class XHashMap<K, V> implements XMap<K, V> {
         }
     }
 
+    /**
+     * поиск производится по ключу.
+     */
     @Override
     public V get(K key) {
         return null;
