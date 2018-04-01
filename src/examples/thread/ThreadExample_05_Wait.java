@@ -27,6 +27,7 @@ public class ThreadExample_05_Wait {
     public synchronized void f(int x) throws InterruptedException {
         System.out.println("+" + x);
         this.wait();
+        this.notify();
         System.out.println("-" + x);
     }
 }
