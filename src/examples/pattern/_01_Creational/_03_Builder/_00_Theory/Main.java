@@ -5,6 +5,13 @@ import examples.pattern._01_Creational._03_Builder._00_Theory.entity.Request;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Методу {@link PathParser} parse() передается строка,
+ * на основаниии анализа которой
+ * возвращается {@link PathIF} и у него вызывается метод send()
+ * См. далее parse()
+ */
+
 public class Main {
     public static void main(String[] args) {
         List<Request> list = new ArrayList();
@@ -16,9 +23,9 @@ public class Main {
         list.add(new Request("pizda bistro podyezd ti"));
 
 
-        for (int i = 0; i < list.size(); i++) {
+        for (Request request : list) {
             PathParser parser = new PathParser();
-            (parser.parse(list.get(i))).send();
+            (parser.parse(request)).send();
         }
     }
 }
