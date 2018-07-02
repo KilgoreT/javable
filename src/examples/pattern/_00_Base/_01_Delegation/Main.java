@@ -1,6 +1,4 @@
-package examples.pattern._00_Base;
-
-import examples.pattern._00_Base._01_Delegation.Person;
+package examples.pattern._00_Base._01_Delegation;
 
 /**
  * Мотив 1:
