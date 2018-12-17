@@ -1,6 +1,6 @@
 package pazzles;
 
-public class _0_04_Multicast {
+public class _0_06_Multicast {
     public static void main(String[] args) {
 
         System.out.println(
@@ -32,22 +32,23 @@ public class _0_04_Multicast {
          * char
          * единственный беззнаковый тип.
          * лучше избегать его конвертации в более широкий тип.
-         * если не нужен знак - использовать битовую маску:
+         * если не нужен знак - для наглядности использовать битовую маску:
          */
         int i = c & 0xffff;
+        int ii = c; // или просто добавить коммент о том, что знак не выполняется
 
         /**
          * если нужен знак,
          * кастить char в short
          */
-        int ii = (short) c;
+        int iii = (short) c;
 
         /**
          * byte -> char
          */
         byte b = 0b1111111 ;
-        char сс = (char) (b & 0xff); // если byte -> char и не нужен знак - использовать маску
-        char ccc = (char) b;         // если нужен знак
+        char сс = (char) (b & 0xff); // если byte -> char и не нужен знак для ясности - использовать маску
+        char ccc = (char) b;         // знак нужен, добавить коммент
 
 
     }

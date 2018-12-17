@@ -3,7 +3,7 @@ package pazzles;
 /**
  * Created by apomazkin on 21.02.2017.
  */
-public class _0_03_HexMixedComputation {
+public class _0_05_HexMixedComputation {
     public static void hexAddition() {
         System.out.println(
                 Long.toHexString(0x100000000L + 0xcafebabe)
