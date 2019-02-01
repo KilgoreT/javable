@@ -9,10 +9,10 @@ public class _0_08_DosEquis {
         char x = 'X';
         int i = 0;
 
-        System.out.print("mast be 'X' : ");
+        System.out.print("must be 'X' : ");
         System.out.println(true ? x : 0);
 
-        System.out.print("mast be 'X' : ");
+        System.out.print("must be 'X' : ");
         System.out.println(false ? i : x);
 
         /**
@@ -32,7 +32,7 @@ public class _0_08_DosEquis {
          * можно переменную int финализировать и тогда получится то, что ожидается увидеть.
          */
         final int ii = 0;
-        System.out.print("mast be 'X' : ");
+        System.out.print("must be 'X' : ");
         System.out.println(false ? ii : x);
 
         /**

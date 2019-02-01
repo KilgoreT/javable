@@ -1,6 +1,6 @@
 package pazzles;
 
-public class _0_09_CompoundAssignmentOperator {
+public class _0_09_CompoundAssignmentWithCast {
     public static void main(String[] args) {
 
         short x = 0;
