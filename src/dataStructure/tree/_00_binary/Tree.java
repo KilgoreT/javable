@@ -4,6 +4,10 @@ public class Tree {
 
     private Node root;
 
+    public Node getRoot() {
+        return root;
+    }
+
     Node find(int key) {
 
         Node current = root;
@@ -51,6 +55,97 @@ public class Tree {
             }
         }
     }
+
+    // ---- Обход ---- //
+    void inOrder() {
+        inOrder(root);
+    }
+
+    void preOrder() {
+        preOrder(root);
+    }
+
+    void postOrder() {
+        postOrder(root);
+    }
+
+    /**
+     * Симметричный обход
+     * ноды посещаются по мере возрастания их ключа.
+     * @param node входная нода
+     */
+    private void inOrder(Node node) {
+
+        if (node != null) {
+            inOrder(node.getLeft());
+            System.out.println(node.showNode());
+            inOrder(node.getRight());
+        }
+    }
+
+    /**
+     * Прямой обход
+     * пример назначения: обход алгебраического выражения в инфиксной записи.
+     * @param node входная нода
+     */
+
+    private void preOrder(Node node) {
+
+        if (node != null) {
+            System.out.print(node.getData() + " ");
+            preOrder(node.getLeft());
+            preOrder(node.getRight());
+        }
+    }
+
+    /**
+     * Обратный обход
+     * для постфиксной записи.
+     * @param node входная нода
+     */
+    private void postOrder(Node node) {
+
+        if (node != null) {
+            postOrder(node.getLeft());
+            postOrder(node.getRight());
+            System.out.print(node.getData() + " ");
+        }
+    }
+
+    Node getMinimum() {
+
+        Node current = root;
+
+        if (current == null) {
+            return null;
+        }
+        while (current != null) {
+            if(current.getLeft() != null) {
+                current = current.getLeft();
+            } else {
+                return current;
+            }
+        }
+        return current;
+    }
+
+    Node getMaximum() {
+
+        Node current = root;
+
+        if (current == null) {
+            return null;
+        }
+        while (current != null) {
+            if(current.getRight() != null) {
+                current = current.getRight();
+            } else {
+                return current;
+            }
+        }
+        return current;
+    }
+
 
     void delete(int key) {}
 
