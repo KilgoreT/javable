@@ -1,35 +1,32 @@
 package dataStructure.tree._02_234Tree;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Node {
 
     private static final int ORDER = 4;
+    public static final int FIRST_INDEX = 0;
 
     private Node parent;
     private int itemCount;
-    private List<Node> childs = new ArrayList<>(ORDER);
-    private List<DataItem> items = new ArrayList<>(ORDER - 1);
-//    private Node[] childs = new Node[ORDER];
-//    private DataItem[] items = new DataItem[ORDER - 1];
 
-    public void connectChild(int childNum, Node child) {
-        childs.add(childNum, child);
-//        childs[childNum] = child;
+    private Node[] children = new Node[ORDER];
+    private DataItem[] items = new DataItem[ORDER - 1];
+
+    public void connectChild(int index, Node child) {
+        children[index] = child;
         if (child != null) {
             child.parent = this;
         }
     }
 
-    public Node disconnectChild(int childIndex) {
-        Node disconnected = childs[childIndex];
-        childs[childIndex] = null;
+    public Node disconnectChild(int index) {
+        Node disconnected = children[index];
+        children[index] = null;
         return disconnected;
     }
 
-    public Node getChild(int childIndex) {
-        return childs[childIndex];
+    public Node getChild(int index) {
+        return children[index];
     }
 
     public Node getParent() {
@@ -37,15 +34,15 @@ public class Node {
     }
 
     public boolean isLeaf() {
-        return childs[0] == null;
+        return children[FIRST_INDEX] == null;
     }
 
     public int getItemCount() {
         return itemCount;
     }
 
-    public DataItem getItem(int itemIndex) {
-        return items[itemIndex];
+    public DataItem getItem(int index) {
+        return items[index];
     }
 
     public boolean ifFull() {
@@ -66,8 +63,13 @@ public class Node {
     public int insertItem(DataItem item) {
         itemCount++;
         long newKey = item.key;
+
         for (int index = ORDER - 2; index >= 0; index--) {
-            if (items[index] == null) continue;
+
+            if (items[index] == null) {
+                continue;
+            }
+
             long thisKey = items[index].key;
             if (newKey < thisKey) {
                 items[index + 1] = items[index];
@@ -76,8 +78,8 @@ public class Node {
                 return index + 1;
             }
         }
-        items[0] = item;
-        return 0;
+        items[FIRST_INDEX] = item;
+        return FIRST_INDEX;
     }
 
     public DataItem removeItem() {

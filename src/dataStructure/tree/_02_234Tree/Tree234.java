@@ -4,19 +4,25 @@ public class Tree234 {
 
     private Node root = new Node();
 
-    public int find(int key) {
+    /**
+     * Поиск элемента по ключу.
+     * @param key ключ
+     * @return DataItem
+     */
+    public DataItem find(int key) {
         Node current = root;
-        int childNumber;
+        int index;
         while (true) {
-            if ((childNumber = current.findItem(key)) != -1) {
-                return childNumber;
+            if ((index = current.findItem(key)) != -1) {
+                return current.getItem(index);
             } else if (current.isLeaf()) {
-                return -1;
+                return null;
             } else {
                 current = getNextChild(current, key);
             }
         }
     }
+
 
     public void insert(DataItem item) {
         Node current = root;
@@ -35,39 +41,52 @@ public class Tree234 {
     }
 
     public void split(Node node) {
-        DataItem itemB;
-        DataItem itemC;
+
         Node parent;
-        Node child2;
-        Node child3;
         int itemIndex;
 
-        itemC = node.removeItem();
-        itemB = node.removeItem();
-        child2 = node.disconnectChild(2);
-        child3 = node.disconnectChild(3);
-        Node newRight = new Node();
+        // itemC уходит в nextNode
+        DataItem itemC = node.removeItem();
+        //itecB уходит в родителя
+        DataItem itemB = node.removeItem();
 
+        // Потомки для nextNode
+        Node nextNodeChild2 = node.disconnectChild(2);
+        Node nextNodeChild3 = node.disconnectChild(3);
+
+        // 1. Построение nextNode: элемент itemC и два потомка
+        Node nextNode = new Node();
+        nextNode.insertItem(itemC);
+        nextNode.connectChild(0, nextNodeChild2);
+        nextNode.connectChild(1, nextNodeChild3);
+
+        // если разбиваемый является root,
+        // инициируем новый root
+        // и добавляем потомком старый root
         if (node == root) {
             root = new Node();
-            parent = root;
             root.connectChild(0, node);
+            parent = root;
         } else {
             parent = node.getParent();
         }
 
+        // 2. itemB уходит к предку
         itemIndex = parent.insertItem(itemB);
-        int n = parent.getItemCount();
 
-        for (int i = n - 1; i > itemIndex; i--) {
+        int itemCount = parent.getItemCount();
+        // для наглядности обозначаю индекс самого старшего элемента предка
+        int lastIndex = itemCount - 1;
+
+        // перемещение связей родителя на одного потомка вправо
+        // на случай, если после itemB есть еще элементы.
+        for (int i = lastIndex; i > itemIndex; i--) {
             Node temp = parent.disconnectChild(i);
-            parent.connectChild(i +1 , temp);
+            parent.connectChild(i + 1 , temp);
         }
-        parent.connectChild(itemIndex + 1, newRight);
+        // 3. добавление nextNode к предку по нужному индексу.
+        parent.connectChild(itemIndex + 1, nextNode);
 
-        newRight.insertItem(itemC);
-        newRight.connectChild(0, child2);
-        newRight.connectChild(1, child3);
     }
 
     public Node getNextChild(Node node, long key) {
