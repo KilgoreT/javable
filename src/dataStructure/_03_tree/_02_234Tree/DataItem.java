@@ -1,4 +1,4 @@
-package dataStructure.tree._02_234Tree;
+package dataStructure._03_tree._02_234Tree;
 
 public class DataItem {
 

@@ -1,4 +1,4 @@
-package dataStructure.tree._00_binary;
+package dataStructure._03_tree._00_binary;
 
 public class _TreeApp {
     public static void main(String[] args) {
