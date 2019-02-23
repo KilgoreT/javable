@@ -11,9 +11,9 @@ package dataStructure._04_hash._00_linear_probing;
  * Эта разновидность группировки называется первичной.
  * Группировка снижает быстродействие таблицы.
  */
-public class HashTableLinearProbing extends HashTable {
+public class _00_HashTableLinearProbing extends AbstractHashTable {
 
-    public HashTableLinearProbing(int arraySize) {
+    public _00_HashTableLinearProbing(int arraySize) {
         super(arraySize);
     }
 
@@ -81,14 +81,14 @@ public class HashTableLinearProbing extends HashTable {
             if (hashArray[hashValue].getKey() == key) {
                 return hashArray[hashValue];
             }
-            hashValue = generateNextStep(hashValue);
+            hashValue = hashFunc(hashValue);
             hashValue %= arraySize;
         }
         return null;
     }
 
     @Override
-    protected int generateNextStep(int step) {
+    protected int hashFunc(int step) {
         return ++step;
     }
 }

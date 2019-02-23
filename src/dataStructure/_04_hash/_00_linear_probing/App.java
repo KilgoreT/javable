@@ -2,8 +2,8 @@ package dataStructure._04_hash._00_linear_probing;
 
 public class App {
     public static void main(String[] args) {
-//        HashTableLinearProbing table = new HashTableLinearProbing(9);
-        HashTableQuadraticProbing table = new HashTableQuadraticProbing(13);
+//        _00_HashTableLinearProbing table = new _00_HashTableLinearProbing(9);
+        _01_HashTableQuadraticProbing table = new _01_HashTableQuadraticProbing(13);
         table.displayTable();
 
         table.insert(new DataItem(41));

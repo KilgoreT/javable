@@ -7,13 +7,15 @@ package dataStructure._04_hash._00_linear_probing;
  * X + 1^2, X + 2^2, X + 3^2 и т.д.
  *
  * Эта последовательность называется вторичной группировкой.
+ * Может генерировать одни и теже смещения, если размер массива не простое число.
+ * в этом случае шаг будет увеличиваться до тех пор, пока не переполнится переменная шага.
  *
  * В этом случае важно, чтобы размер массива был простым числом,
  * иначе возможна бесконечная последовательность проверок.
  */
-public class HashTableQuadraticProbing extends HashTable {
+public class _01_HashTableQuadraticProbing extends AbstractHashTable {
 
-    public HashTableQuadraticProbing(int arraySize) {
+    _01_HashTableQuadraticProbing(int arraySize) {
         super(arraySize);
     }
 
@@ -29,7 +31,7 @@ public class HashTableQuadraticProbing extends HashTable {
         // ищем пустую или с удаленным элементом ячейку
         while (hashArray[hashValue] != null && hashArray[hashValue].getKey() != -1) {
             // шаг
-            hashValue = hashValue + generateNextStep(step);
+            hashValue = hashValue + hashFunc(step);
             // если достигнет конца массива
             hashValue %= arraySize;
             // увеличиваем шаг
@@ -54,7 +56,7 @@ public class HashTableQuadraticProbing extends HashTable {
                 hashArray[hashValue] = nonItem;
                 return removed;
             }
-            hashValue = hashValue + generateNextStep(step++);
+            hashValue = hashValue + hashFunc(step++);
             hashValue %= arraySize;
         }
         return null;
@@ -74,14 +76,14 @@ public class HashTableQuadraticProbing extends HashTable {
             if (hashArray[hashValue].getKey() == key) {
                 return hashArray[hashValue];
             }
-            hashValue = hashValue + generateNextStep(step++);
+            hashValue = hashValue + hashFunc(step++);
             hashValue %= arraySize;
         }
         return null;
     }
 
     @Override
-    protected int generateNextStep(int step) {
+    protected int hashFunc(int step) {
         return (int) Math.pow(step, 2);
     }
 }
