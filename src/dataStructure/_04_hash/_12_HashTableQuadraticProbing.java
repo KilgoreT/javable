@@ -1,4 +1,6 @@
-package dataStructure._04_hash._00_linear_probing;
+package dataStructure._04_hash;
+
+import dataStructure._04_hash.entity.DataItem;
 
 /**
  * Квадратичное пробирование
@@ -13,9 +15,9 @@ package dataStructure._04_hash._00_linear_probing;
  * В этом случае важно, чтобы размер массива был простым числом,
  * иначе возможна бесконечная последовательность проверок.
  */
-public class _01_HashTableQuadraticProbing extends AbstractHashTable {
+public class _12_HashTableQuadraticProbing extends _10_AbstractOpenAddressing {
 
-    _01_HashTableQuadraticProbing(int arraySize) {
+    _12_HashTableQuadraticProbing(int arraySize) {
         super(arraySize);
     }
 
@@ -27,11 +29,11 @@ public class _01_HashTableQuadraticProbing extends AbstractHashTable {
     @Override
     public void insert(DataItem item) {
         int step = 1;
-        int hashValue = getHashCode(item.getKey());
+        int hashValue = hashFunc(item.getKey());
         // ищем пустую или с удаленным элементом ячейку
         while (hashArray[hashValue] != null && hashArray[hashValue].getKey() != -1) {
             // шаг
-            hashValue = hashValue + hashFunc(step);
+            hashValue = hashValue + getNextIndex(step);
             // если достигнет конца массива
             hashValue %= arraySize;
             // увеличиваем шаг
@@ -49,14 +51,14 @@ public class _01_HashTableQuadraticProbing extends AbstractHashTable {
     @Override
     public DataItem delete(int key) {
         int step = 1;
-        int hashValue = getHashCode(key);
+        int hashValue = hashFunc(key);
         while (hashArray[hashValue] != null) {
             if (hashArray[hashValue].getKey() == key) {
                 DataItem removed = hashArray[hashValue];
                 hashArray[hashValue] = nonItem;
                 return removed;
             }
-            hashValue = hashValue + hashFunc(step++);
+            hashValue = hashValue + getNextIndex(step++);
             hashValue %= arraySize;
         }
         return null;
@@ -71,19 +73,19 @@ public class _01_HashTableQuadraticProbing extends AbstractHashTable {
     @Override
     public DataItem find(int key) {
         int step = 1;
-        int hashValue = getHashCode(key);
+        int hashValue = hashFunc(key);
         while (hashArray[hashValue] != null) {
             if (hashArray[hashValue].getKey() == key) {
                 return hashArray[hashValue];
             }
-            hashValue = hashValue + hashFunc(step++);
+            hashValue = hashValue + getNextIndex(step++);
             hashValue %= arraySize;
         }
         return null;
     }
 
     @Override
-    protected int hashFunc(int step) {
+    public int getNextIndex(int step) {
         return (int) Math.pow(step, 2);
     }
 }

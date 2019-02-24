@@ -1,4 +1,4 @@
-package dataStructure._04_hash._00_linear_probing;
+package dataStructure._04_hash.entity;
 
 public class DataItem {
 

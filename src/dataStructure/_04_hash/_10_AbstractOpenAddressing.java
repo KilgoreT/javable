@@ -1,38 +1,22 @@
-package dataStructure._04_hash._00_linear_probing;
+package dataStructure._04_hash;
+
+import dataStructure._04_hash.entity.DataItem;
 
 /**
- * HashTable Example
  *
- * Коэффициент заполнения - отношение количества элементов в таблице к размеру таблицы.
+ * Методы открытой адрессации:
+ * 1. Линейное пробирование
+ * 2. Квадратичное пробирование
+ * 3. Двойное хэширование
+ *
  */
-public abstract class AbstractHashTable {
+public abstract class _10_AbstractOpenAddressing extends _00_AbstractHashTable<DataItem, DataItem> {
 
-    DataItem[] hashArray;
-    int arraySize;
-    DataItem nonItem;
-
-    AbstractHashTable(int arraySize) {
-        this.arraySize = arraySize;
+    _10_AbstractOpenAddressing(int arraySize) {
+        super(arraySize);
         hashArray = new DataItem[arraySize];
         nonItem = new DataItem(-1);
     }
-
-    /**
-     * Хэш функция.
-     * Здесь это остаток от деления
-     *
-     * @param key - ключ
-     * @return значение хэш-кода
-     */
-    int getHashCode(int key) {
-        return key % arraySize;
-    }
-
-    public abstract void insert(DataItem item);
-    public abstract DataItem delete(int key);
-    public abstract DataItem find(int key);
-
-    protected abstract int hashFunc(int step);
 
     /**
      * Удаление элемента из таблицы
@@ -68,5 +52,4 @@ public abstract class AbstractHashTable {
         }
         System.out.println("");
     }
-
 }

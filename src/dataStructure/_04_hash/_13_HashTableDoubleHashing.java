@@ -1,4 +1,7 @@
-package dataStructure._04_hash._00_linear_probing;
+package dataStructure._04_hash;
+
+import dataStructure._04_hash.entity.DataItem;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Двойное хэширование.
@@ -16,9 +19,9 @@ package dataStructure._04_hash._00_linear_probing;
  * При такой функции смешение варьируется от 1 до константы.
  *
  */
-public class _02_HashTableDoubleHashing extends AbstractHashTable {
+public class _13_HashTableDoubleHashing extends _10_AbstractOpenAddressing {
 
-    public _02_HashTableDoubleHashing(int arraySize) {
+    public _13_HashTableDoubleHashing(int arraySize) {
         super(arraySize);
     }
 
@@ -67,6 +70,11 @@ public class _02_HashTableDoubleHashing extends AbstractHashTable {
     @Override
     protected int hashFunc(int key) {
         return key % arraySize;
+    }
+
+    @Override
+    public int getNextIndex(int step) {
+        throw new NotImplementedException();
     }
 
     private int secondHashFunc(int key) {

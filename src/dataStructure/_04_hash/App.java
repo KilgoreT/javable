@@ -1,9 +1,13 @@
-package dataStructure._04_hash._00_linear_probing;
+package dataStructure._04_hash;
+
+import dataStructure._04_hash.entity.DataItem;
 
 public class App {
     public static void main(String[] args) {
-//        _00_HashTableLinearProbing table = new _00_HashTableLinearProbing(9);
-        _01_HashTableQuadraticProbing table = new _01_HashTableQuadraticProbing(13);
+//        _11_HashTableLinearProbing table = new _11_HashTableLinearProbing(13);
+//        _12_HashTableQuadraticProbing table = new _12_HashTableQuadraticProbing(13);
+        _13_HashTableDoubleHashing table = new _13_HashTableDoubleHashing(13);
+//        _21_SeparateChainingHashTable table = new _21_SeparateChainingHashTable(13);
         table.displayTable();
 
         table.insert(new DataItem(41));

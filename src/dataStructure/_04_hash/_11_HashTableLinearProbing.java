@@ -1,4 +1,6 @@
-package dataStructure._04_hash._00_linear_probing;
+package dataStructure._04_hash;
+
+import dataStructure._04_hash.entity.DataItem;
 
 /**
  * Линейное пробирование.
@@ -11,9 +13,9 @@ package dataStructure._04_hash._00_linear_probing;
  * Эта разновидность группировки называется первичной.
  * Группировка снижает быстродействие таблицы.
  */
-public class _00_HashTableLinearProbing extends AbstractHashTable {
+public class _11_HashTableLinearProbing extends _10_AbstractOpenAddressing {
 
-    public _00_HashTableLinearProbing(int arraySize) {
+    public _11_HashTableLinearProbing(int arraySize) {
         super(arraySize);
     }
 
@@ -25,7 +27,7 @@ public class _00_HashTableLinearProbing extends AbstractHashTable {
     @Override
     public void insert(DataItem item) {
 
-        int hashValue = getHashCode(item.getKey());
+        int hashValue = hashFunc(item.getKey());
 
         // пока не встретится пустая ячейка массива,
         // либо с объектом, помеченным на удаление,
@@ -48,7 +50,7 @@ public class _00_HashTableLinearProbing extends AbstractHashTable {
      */
     @Override
     public DataItem delete(int key) {
-        int hashValue = getHashCode(key);
+        int hashValue = hashFunc(key);
 
         // если ячейка не пустая, значит удаляемый элемент находится в ней,
         // либо дальше в последовательности ячеек.
@@ -74,21 +76,21 @@ public class _00_HashTableLinearProbing extends AbstractHashTable {
      */
     @Override
     public DataItem find(int key) {
-        int hashValue = getHashCode(key);
+        int hashValue = hashFunc(key);
 
         // в этот раз проверяем, чтобы цепочка обрывалась только пустой ячейкой.
         while (hashArray[hashValue] != null) {
             if (hashArray[hashValue].getKey() == key) {
                 return hashArray[hashValue];
             }
-            hashValue = hashFunc(hashValue);
+            hashValue = getNextIndex(hashValue);
             hashValue %= arraySize;
         }
         return null;
     }
 
     @Override
-    protected int hashFunc(int step) {
+    public int getNextIndex(int step) {
         return ++step;
     }
 }
