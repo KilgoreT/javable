@@ -1,6 +1,6 @@
 package examples.types;
 
-import org.omg.PortableInterceptor.INACTIVE;
+//import org.omg.PortableInterceptor.INACTIVE;
 
 public class Binary {
 
