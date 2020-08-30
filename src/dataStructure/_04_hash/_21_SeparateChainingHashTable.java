@@ -1,7 +1,6 @@
 package dataStructure._04_hash;
 
 import dataStructure._04_hash.entity.Link;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class _21_SeparateChainingHashTable extends _20_AbstractSeparateChaining {
 
@@ -12,7 +11,7 @@ public class _21_SeparateChainingHashTable extends _20_AbstractSeparateChaining 
 
     @Override
     public int getNextIndex(int step) {
-        throw new NotImplementedException();
+        throw new IllegalArgumentException();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package dataStructure._04_hash;
 
 import dataStructure._04_hash.entity.DataItem;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Двойное хэширование.
@@ -74,7 +73,7 @@ public class _13_HashTableDoubleHashing extends _10_AbstractOpenAddressing {
 
     @Override
     public int getNextIndex(int step) {
-        throw new NotImplementedException();
+        return -1;
     }
 
     private int secondHashFunc(int key) {
